@@ -15,9 +15,19 @@
 
 @foreach($usuarios as $usuario)
     <p>{{ $usuario->nombre }} {{ $usuario->apellido }} - {{ $usuario->email }}</p>
+    <a href="/admin/users/{{ $usuario->id }}/edit">
+        <button>Editar</button>
+    </a>
+
+    <form action="/admin/users/{{ $usuario->id }}" method="POST" style="display: inline;">
+        @csrf
+        @method('DELETE')
+        <button type="submit">Eliminar</button>
+    </form>
     <br>
 @endforeach
 
+<br>
 
 <a href="/admin/users/create">
     <button>Registrar Usuario</button>

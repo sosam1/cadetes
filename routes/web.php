@@ -34,7 +34,14 @@ Route::get('/admin/users/create', function () {
     return view('admin.registrar_usuario', compact('roles'));
 });
 
+//llamo vista para editar usuario
+Route::get('/admin/users/{id}/edit', function($id){
+    $user = User::findOrFail($id);
+    return view('admin.editar_usuario', compact('user'));
+});
+
 Route::post('/admin/users/create', [UsuarioController::class, 'create']);
+Route::put('/admin/users/{id}', [UsuarioController::class, 'update']);
 Route::get('/admin/users', [UsuarioController::class, 'getAllUsers']);
 Route::delete('/admin/users/{id}', [UsuarioController::class, 'delete']);
-Route::put('/admin/users/{id}', [UsuarioController::class, 'update']);
+

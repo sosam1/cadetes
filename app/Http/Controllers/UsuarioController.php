@@ -36,21 +36,24 @@ class UsuarioController extends Controller {
         $user->delete();
         return response()->json(['message' => 'Usuario eliminado exitosamente']);
     }
-
-    public function update(request $request, $id) {
+    
+    public function update(Request $request, $id) {
         $user = User::find($id);
         if (!$user) {
             return response()->json(['message' => 'Usuario no encontrado'], 404);
         }
 
-        $user->name = $request->name ?? $user->name;
-        $user->email = $request->email ?? $user->email;
+        $user->nombre = $request->nombre;
+        $user->apellido = $request->apellido;
+        $user->email = $request->email;
+        $user->telefono = $request->telefono;
         if ($request->password) {
-            $user->password = Hash::make($request->password);
+            $user->password_hash = Hash::make($request->password);
         }
-        $user->role_id = $request->role_id ?? $user->role_id;
+        $user->activo = $request->has('activo');
         $user->save();
 
         return response()->json(['message' => 'Usuario actualizado exitosamente', 'user' => $user]);
     }
+
 }
