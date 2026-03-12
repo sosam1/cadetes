@@ -33,5 +33,30 @@
     <button>Registrar Usuario</button>
 </a>
 
+
+<h2>Lista de clientes</h2>
+
+@foreach($clientes as $cliente)
+    <p>{{ $cliente->nombre }} - {{ $cliente->email }}</p>
+    <a href="/admin/clientes/{{ $cliente->id }}/edit">
+        <button>Editar</button>
+    </a>
+
+    <form action="/admin/clientes/{{ $cliente->id }}" method="POST" style="display: inline;">
+        @csrf
+        @method('DELETE')
+        <button type="submit">Eliminar</button>
+    </form>
+    <br>
+@endforeach
+
+<br>
+
+<a href="/admin/clientes/create">
+    <button>Registrar Cliente</button>
+</a>
+
+
+
 </body>
 </html>
