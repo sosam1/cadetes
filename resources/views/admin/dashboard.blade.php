@@ -9,5 +9,11 @@
 
 <h2>Hola {{ Auth::user()->nombre }}</h2>
 
+<br>
+
+<a href="/admin/users/create">
+    <button>Registrar Usuario</button>
+</a>
+
 </body>
 </html>
