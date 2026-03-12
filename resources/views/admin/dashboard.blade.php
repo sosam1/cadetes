@@ -11,6 +11,14 @@
 
 <br>
 
+<h2>Lista de usuarios</h2>
+
+@foreach($usuarios as $usuario)
+    <p>{{ $usuario->nombre }} {{ $usuario->apellido }} - {{ $usuario->email }}</p>
+    <br>
+@endforeach
+
+
 <a href="/admin/users/create">
     <button>Registrar Usuario</button>
 </a>

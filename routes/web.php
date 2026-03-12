@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UsuarioController;
 use App\Models\Role;
+use App\Models\User;
 
 Route::get('/login', function () {
     return view('login');
@@ -12,7 +13,8 @@ Route::get('/login', function () {
 Route::post('/login',[AuthController::class,'login']);
 
 Route::get('/admin/dashboard', function(){
-    return view('admin.dashboard');
+    $usuarios = User::all();
+    return view('admin.dashboard', compact('usuarios'));
 });
 
 Route::get('/admin/pedidos', function(){
