@@ -10,6 +10,37 @@ body {
     color: #0f172a;
 }
 
+.sidebar-brand{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.brand-icon{
+    width: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand-logo{
+    width: 30px;
+    filter: invert(1);
+}
+
+.brand-text h2{
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.brand-text p{
+    font-size: 0.8rem;
+    margin: 0;
+    opacity: 0.8;
+}
+
 .sidebar {
     width: 260px;
     min-height: 100vh;
@@ -44,4 +75,43 @@ body {
 .sidebar-nav i{
     margin-right: 12px;
     font-size: 1.5rem;
+}
+
+.btn-logout{
+    width: 100%;
+
+}
+
+img{
+    width: 25px;
+    margin: 0;
+    filter: invert(1);
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    pointer-events: none;
+}
+
+.user-card{
+    background-color: #432DD7;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.user-card h4{
+    font-size: 1rem;
+    color: #fff;
+    margin: 0;
+}
+
+.user-card p{
+    font-size: 0.9rem;
+    color: #fff;
+    margin: 0;
+}
+
+.user-card span{
+    font-size: 0.8rem;
+    color: #fff;
 }
