@@ -1,82 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Panel Admin</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@yield('title', 'Panel Admin')</title>
+
+    <link rel="stylesheet" href="{{ asset('css/admin_dashboard.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
-<h1>Panel {{ Auth::user()->rol->nombre }}</h1>
+    <div class="admin-layout">
 
-<h2>Hola {{ Auth::user()->nombre }}</h2>
+        <aside class="sidebar">
+            <div>
+                <div class="sidebar-brand">
+                    <div class="brand-icon">
+                        <i class="bi bi-box-seam"></i>
+                    </div>
+                    <div class="brand-text">
+                        <h2>Cadeterías</h2>
+                        <p>Panel Admin</p>
+                    </div>
+                </div>
 
-<br>
+                <nav class="sidebar-nav">
+                    <a href="#" class="nav-item active">
+                        <i class="bi bi-grid"></i>
+                        <span>Dashboard</span>
+                    </a>
 
-<h2>Lista de usuarios</h2>
+                    <a href="#" class="nav-item">
+                        <i class="bi bi-people"></i>
+                        <span>Clientes</span>
+                    </a>
 
-@foreach($usuarios as $usuario)
-    <p>{{ $usuario->nombre }} {{ $usuario->apellido }} - {{ $usuario->email }}</p>
-    <a href="/admin/users/{{ $usuario->id }}/edit">
-        <button>Editar</button>
-    </a>
+                    <a href="#" class="nav-item">
+                        <i class="bi bi-box-seam"></i>
+                        <span>Pedidos</span>
+                    </a>
 
-    <form action="/admin/users/{{ $usuario->id }}" method="POST" style="display: inline;">
-        @csrf
-        @method('DELETE')
-        <button type="submit">Eliminar</button>
-    </form>
-    <br>
-@endforeach
+                    <a href="#" class="nav-item">
+                        <i class="bi bi-truck"></i>
+                        <span>Asignaciones</span>
+                    </a>
 
-<br>
+                    <a href="#" class="nav-item">
+                        <i class="bi bi-person-gear"></i>
+                        <span>Usuarios</span>
+                    </a>
+                </nav>
+            </div>
 
-<a href="/admin/users/create">
-    <button>Registrar Usuario</button>
-</a>
+            <div class="sidebar-footer">
+                <div class="user-card">
+                    <h4>Admin Sistema</h4>
+                    <p>admin@cadeteria.com</p>
+                    <span>Admin</span>
+                </div>
 
-
-<h2>Lista de clientes</h2>
-
-@foreach($clientes as $cliente)
-    <p>{{ $cliente->nombre }} - {{ $cliente->email }}</p>
-    <a href="/admin/clientes/{{ $cliente->id }}/edit">
-        <button>Editar</button>
-    </a>
-
-    <form action="/admin/clientes/{{ $cliente->id }}" method="POST" style="display: inline;">
-        @csrf
-        @method('DELETE')
-        <button type="submit">Eliminar</button>
-    </form>
-    <br>
-@endforeach
-
-<br>
-
-<a href="/admin/clientes/create">
-    <button>Registrar Cliente</button>
-</a>
-
-<h2>Gestionar Pedidos</h2>
-
-@foreach($pedidos as $pedido)
-    <p>Pedido #{{ $pedido->id }} - Cliente: {{ $pedido->cliente->nombre }} - Estado: {{ $pedido->estado->nombre }}</p>
-    <a href="/admin/pedidos/{{ $pedido->id }}/edit">
-        <button>Editar</button>
-    </a>
-
-    <form action="/admin/pedidos/{{ $pedido->id }}" method="POST" style="display: inline;">
-        @csrf
-        @method('DELETE')
-        <button type="submit">Eliminar</button>
-    </form>
-    <br>
-@endforeach
-
-<a href="/admin/pedidos/create">
-    <button>Registrar Pedido</button>
-</a>
+                    
+                <button class="btn btn-danger"><i class="bi bi-box-arrow-right"></i>Cerrar Sesión</button>
+            </div>
+        </aside>
 
 
+        <main class="main-content">
+            @yield('content')
+        </main>
+
+    </div>
 
 </body>
 </html>
