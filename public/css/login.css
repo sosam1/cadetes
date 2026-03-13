@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #E7EEFF !important;
+}
+
+.login-container{
+    max-width: 450px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.img-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4F39F6;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.box-img{
+    width: 40px;
+    filter: invert(1);
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    pointer-events: none;
+}
+
+.titulo{
+    margin-top: 10px;
+    text-align: center;
+}
+
+.titulo p{
+    margin-bottom: 0;
+    color: #6c757d;
+}
+
+.form{
+    margin-top: 30px;
+}
+
+label{
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    font-weight: 500;
+}
+
+.btn-login{
+    width: 100%;
+    padding: 10px;
+    background: #4F39F6;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 40px;
+}
+
+.btn-login:hover{
+    background: #3d2cc7;
+}
+
+@media (max-width: 576px){
+    .login-container{
+        padding: 24px 20px;
+        border-radius: 12px;
+    }
+
+    .titulo h2{
+        font-size: 1.5rem;
+    }
+
+    .titulo p{
+        font-size: 0.95rem;
+    }
+
+    .img-container{
+        width: 70px;
+        height: 70px;
+    }
+
+    .box-img{
+        width: 34px;
+    }
+}
