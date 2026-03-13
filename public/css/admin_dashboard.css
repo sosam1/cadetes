@@ -10,6 +10,11 @@ body {
     color: #0f172a;
 }
 
+.admin-layout{
+    display: flex;
+    min-height: 100vh;
+}
+
 .sidebar-brand{
     display: flex;
     align-items: center;
@@ -114,4 +119,10 @@ img{
 .user-card span{
     font-size: 0.8rem;
     color: #fff;
+}
+
+.main-content{
+    flex: 1;
+    padding: 30px;
+    margin-left: 260px;
 }

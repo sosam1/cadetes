@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/admin_dashboard.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    @stack('styles')
 </head>
 <body>
 
@@ -46,7 +47,7 @@
                         <span>Asignaciones</span>
                     </a>
 
-                    <a href="#" class="nav-item">
+                    <a href="{{ route('admin.usuarios') }}" class="nav-item">
                         <i class="bi bi-person-gear"></i>
                         <span>Usuarios</span>
                     </a>
@@ -65,7 +66,9 @@
             </div>
         </aside>
 
-
+        <main class="main-content">
+            @yield('content')
+        </main>
 
     </div>
 
