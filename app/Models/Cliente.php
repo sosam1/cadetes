@@ -16,4 +16,8 @@ class Cliente extends Model {
         'activo'
     ];
 
+    public function direcciones(){
+        return $this->hasMany(Direccion::class, 'cliente_id');
+    }
+
 }

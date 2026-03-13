@@ -4,9 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\PedidoController;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Cliente;
+use App\Models\Pedido;
+use App\Models\EstadoPedido;
 
 Route::get('/login', function () {
     return view('login');
@@ -17,7 +20,8 @@ Route::post('/login',[AuthController::class,'login']);
 Route::get('/admin/dashboard', function(){
     $usuarios = User::all();
     $clientes = Cliente::all();
-    return view('admin.dashboard', compact('usuarios', 'clientes'));
+    $pedidos = Pedido::with('cliente', 'estado')->get();
+    return view('admin.dashboard', compact('usuarios', 'clientes', 'pedidos'));
 });
 
 Route::get('/admin/pedidos', function(){
@@ -50,7 +54,6 @@ Route::delete('/admin/users/{id}', [UsuarioController::class, 'delete']);
 
 // Rutas para la gestión de clientes
 //vistas para clientes
-
 Route::get('/admin/clientes/create', function () {
     $clientes = Cliente::all();
     return view('admin.registrar_cliente', compact('clientes'));
@@ -66,3 +69,22 @@ Route::get('/admin/clientes', [ClienteController::class, 'getAllClientes']);
 Route::put('/admin/clientes/{id}', [ClienteController::class, 'update']);
 Route::delete('/admin/clientes/{id}', [ClienteController::class, 'delete']);
 
+
+// Rutas para la gestión de pedidos
+//vistas para pedidos
+Route::get('/admin/pedidos/create', function () {
+    $clientes = Cliente::all();
+    return view('admin.registrar_pedido', compact('clientes'));
+});
+
+Route::get('/admin/pedidos/{id}/edit', function($id){
+    $pedido = Pedido::findOrFail($id);
+    $clientes = Cliente::all();
+    $estados = EstadoPedido::all();
+    $direcciones = $pedido->cliente->direcciones;
+    return view('admin.editar_pedido', compact('pedido', 'clientes', 'estados', 'direcciones'));
+});
+
+Route::post('/admin/pedidos/create', [PedidoController::class, 'create']);
+Route::put('/admin/pedidos/{id}', [PedidoController::class, 'update']);
+Route::delete('/admin/pedidos/{id}', [PedidoController::class, 'delete']);

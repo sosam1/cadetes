@@ -56,6 +56,26 @@
     <button>Registrar Cliente</button>
 </a>
 
+<h2>Gestionar Pedidos</h2>
+
+@foreach($pedidos as $pedido)
+    <p>Pedido #{{ $pedido->id }} - Cliente: {{ $pedido->cliente->nombre }} - Estado: {{ $pedido->estado->nombre }}</p>
+    <a href="/admin/pedidos/{{ $pedido->id }}/edit">
+        <button>Editar</button>
+    </a>
+
+    <form action="/admin/pedidos/{{ $pedido->id }}" method="POST" style="display: inline;">
+        @csrf
+        @method('DELETE')
+        <button type="submit">Eliminar</button>
+    </form>
+    <br>
+@endforeach
+
+<a href="/admin/pedidos/create">
+    <button>Registrar Pedido</button>
+</a>
+
 
 
 </body>
